@@ -1,0 +1,316 @@
+:root{
+    --light-green: rgb(10, 141, 141);
+    --light-green-x: rgb(9, 124, 124);
+    --light-green-xx: rgb(16, 129, 129);
+    --dark-green: rgb(7, 75, 75);
+    --dark-red: rgb(84, 37, 37);
+    --light-gray: rgb(78, 119, 119);
+    --transparent-green: rgba(10, 141, 141, 0.26);
+    --white: #fff;
+}
+
+body{
+    opacity: 0;
+    transition: .3s;
+    width: 100%;
+    min-height: 100vh;
+    background: var(--dark-green);
+}
+*:not(ul, ol){
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+div.btn[disabled]{
+    cursor: not-allowed;
+}
+
+div.btn[disabled]:hover{
+    background: none;
+}
+
+.app{
+    padding: 90px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs{
+    border: 0 solid transparent;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    position: relative;
+    /* padding-left: 32px; */
+    padding: 2px 0;
+    /* border-left: 32px solid transparent;
+    border-top: 8px solid transparent;
+    border-right: 4px solid transparent;
+    border-bottom: 8px solid transparent; */
+    /* border: 2px solid var(--light-green); */
+    margin: -3px 0 10px -32px;
+    border-radius: 12px;
+    right: 0;
+    background: none;
+}
+
+.inputs .delInputs {
+    position: relative;
+    height: 35px;
+    width: 16px;
+    margin-right: -16px;
+    right: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: .2s;
+}
+
+.inputs .delInputs .material-icons {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    margin-top: 9px;
+}
+
+.inputs:hover .delInputs {
+    opacity: 1;
+}
+
+.inputs:hover{
+    background: var(--light-green);
+    padding-left: 32px;
+    right: 16px;
+}
+
+
+
+/* --------------------------------- */
+/* ESTILOS PARA CADA INPUT IDIVIDUAL */
+/* --------------------------------- */
+
+.inputs input, .inputs select{
+    margin: 0 4px;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    font-size: 14px;
+    padding: 10px;
+    color: white;
+    border: 2px solid rgb(10, 141, 141);
+}
+
+.inputs select{
+    padding: 9px;
+}
+
+.inputs .chapterInput, .inputs .verseInput{
+    width: 3em; 
+}
+
+input::placeholder {
+    color: var(--light-gray);
+    transition: .2s;
+}
+
+.inputs .chapterInput::placeholder{
+    width: 26px;
+}
+
+.inputs .verseInput::placeholder{
+    width: 28px;
+}
+
+.inputs input:focus, .inputs select:focus, .inputs input:focus-visible, .inputs select:focus-visible{
+    outline: none;
+}
+
+.inputs:hover input, .inputs:hover select{
+    background: var(--light-green-xx);
+}
+
+.inputs:hover input::placeholder, .inputs:hover select::placeholder{
+    color: var(--white);
+}
+
+/* -------------------- */
+/* ESTILOS PARA BOTONES */
+/* -------------------- */
+
+.btns{
+    display: flex;
+    margin-top: 10px;
+    width: 380px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.btns > *{
+    margin-bottom: 12px;
+}
+
+.btns .btn{
+    width: 48%;
+    text-align: center;
+    /* border: 2px solid var(--light-green); */
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-radius: 12px;
+}
+
+.btns .okBtn{
+    background: var(--light-green);
+}
+
+.btns .newBtn{
+    background-color: var(--transparent-green);
+}
+
+.btns .tutorialBtn{
+    width: 100%;
+    transition: .5s;
+    background: var(--transparent-green);
+}
+
+.btns .tutorialBtn.big{
+    margin-top: 30px;
+    background: var(--dark-red);
+    border-color: var(--dark-red);
+    margin-bottom: 0;
+}
+
+.btns .tutorialBtn.big:hover{
+    background: var(--dark-red);
+    border-color: var(--dark-red);
+}
+
+.btns .tutorialBtn::before{
+    content: "";
+    position: absolute;
+    width: calc((100vw - 380px) / 2 - 100vw * (5/100));
+    height: 100%;
+    right: calc(378px - ((100vw - 380px) / 2 - 100vw * (5/100)));
+    top: 0;
+    z-index: -1;
+    border-top-left-radius: 12px;
+}
+
+.btns .tutorialBtn.big::before{
+    background: var(--dark-red); 
+    /* border: 2px solid var(--dark-red); */
+    animation: a ease-in-out .5s;
+}
+
+.btns .tutorialBtn.big.finish::before{
+    right: 374px;
+}
+
+@keyframes a {
+    100%{
+        right: 374px;
+    }
+}
+
+.btns .tutorialBtn::after{
+    content: "";
+    position: absolute;
+    width: calc((100vw - 380px) / 2 - 100vw * (5/100));
+    height: 100%;
+    left: calc(378px - ((100vw - 380px) / 2 - 100vw * (5/100)));
+    top: 0;
+    z-index: -1;
+    border-top-right-radius: 12px;
+}
+
+.btns .tutorialBtn.big::after{
+    background: var(--dark-red); 
+    /* border: 2px solid var(--dark-red); */
+    animation: b ease-in-out .5s;
+}
+
+.btns .tutorialBtn.big.finish::after{
+    left: 374px;
+}
+
+@keyframes b {
+    100%{
+        left: 374px;
+    }
+}
+
+
+/* ---------------- */
+/* PARA EL TUTORIAL */
+/* ---------------- */
+
+.tutorial{
+    /* margin: 0 calc(50vw - (475px / 2)); */
+    margin: 0 5%;
+    border: 2px solid var(--light-green);
+    border-bottom: none;
+    padding: 13px 10px;
+    opacity: 0;
+    transition: .5s;
+}
+
+.tutorial h2{
+    font-size: 1.6em;
+    text-decoration: underline;
+}
+
+.tutorial-steps-list{
+    margin-top: 25px;
+}
+
+.tutorial-step{
+    margin-top: 15px;
+}
+
+.tutorial-step::marker{
+    font-size: 90%;
+    font-weight: bold;
+}
+
+.tutorial-step-title{
+    font-size: 1.1em;
+}
+
+.tutorial-step-body{
+    display: flex;
+}
+
+.tutorial-step-text{
+    font-size: 0.9em;
+}
+
+.tutorial-step img{
+    margin-left: 10px;
+    max-height: 6em;
+}
+
+.loading-spinner{
+    /* display: none; */
+    margin: 0 auto;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    border: 5px solid rgb(8, 99, 99);
+    border-top: 5px solid var(--light-green);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
